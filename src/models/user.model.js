@@ -21,6 +21,11 @@ const userSchema = new Schema({
     trim: true,
     minlength: [6, "Password must be at least 6 characters"],
   },
+  role: {
+    type: String,
+    lowercase: true,
+    default: "user",
+  },
 });
 
 // Hash password
