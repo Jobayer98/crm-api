@@ -1,4 +1,4 @@
-const customRoles = (...roles) => {
+const customRole = (...roles) => {
   return (req, res, next) => {
     const user = req.user;
     if (!roles.includes(user.role)) {
@@ -10,4 +10,4 @@ const customRoles = (...roles) => {
   };
 };
 
-module.exports = customRoles;
+module.exports = customRole;

@@ -1,7 +1,7 @@
 const customError = require("../utils/customError");
 const employeeModel = require("../models/employee.model");
 
-class employeeController {
+class EmployeeController {
   static async addEmployee(req, res, next) {
     try {
       const employee = await employeeModel.create({
@@ -23,7 +23,9 @@ class employeeController {
 
   static async getEmployees(req, res, next) {
     try {
-      const employees = await employeeModel.find();
+      const employees = await employeeModel
+        .find()
+        .select("firstName email designation department joined");
 
       if (!employees) {
         return next(new customError("No employees found", 404));
@@ -98,4 +100,4 @@ class employeeController {
   }
 }
 
-module.exports = employeeController;
+module.exports = EmployeeController;

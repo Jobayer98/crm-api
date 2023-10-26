@@ -5,6 +5,7 @@ const cors = require("cors");
 
 //internal middleware
 const authRouter = require("./routes/auth.route");
+const employeeRouter = require("./routes/employee.route");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json(), cookieParser(), morgan("tiny"), cors());
 
 // routes middleware
 app.use("/api/v1", authRouter);
+app.use("/api/v1", employeeRouter);
 
 app.use("*", (req, res) => {
   res.status(404).json({

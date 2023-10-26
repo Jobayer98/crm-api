@@ -15,10 +15,12 @@ const employeeSchema = new Schema({
     required: true,
     trim: true,
     lowercase: true,
+    unique: true,
   },
   phone: {
     type: String,
     trim: true,
+    unique: true,
   },
   address: {
     street: String,
