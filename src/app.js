@@ -7,6 +7,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth.route");
 const employeeRouter = require("./routes/employee.route");
 const clientRouter = require("./routes/client.route");
+const projectRouter = require("./routes/project.route");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json(), cookieParser(), morgan("tiny"), cors());
 app.use("/api/v1", authRouter);
 app.use("/api/v1", employeeRouter);
 app.use("/api/v1", clientRouter);
+app.use("/api/v1", projectRouter);
 
 app.use("*", (req, res) => {
   res.status(404).json({
@@ -25,7 +27,6 @@ app.use("*", (req, res) => {
 });
 
 // error handler
-
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   res.status(statusCode).json({
