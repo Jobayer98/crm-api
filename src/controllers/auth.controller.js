@@ -28,14 +28,11 @@ class AuthController {
         httpOnly: true,
       };
 
-      res
-        .status(201)
-        .cookie("access_token", "Bearer " + token, options)
-        .json({
-          message: "Successfully registered",
-          data: user,
-          token,
-        });
+      res.status(201).cookie("access_token", token, options).json({
+        message: "Successfully registered",
+        data: user,
+        token,
+      });
     } catch (error) {
       return next(new customError(error, 400));
     }
@@ -70,14 +67,23 @@ class AuthController {
       };
 
       res.clearCookie("access_token");
-      res
-        .status(200)
-        .cookie("access_token", "Bearer " + token, options)
-        .json({
-          message: "Successfully logged in",
-          data: user,
-          token,
-        });
+      res.status(200).cookie("access_token", token, options).json({
+        message: "Successfully logged in",
+        data: user,
+        token,
+      });
+    } catch (error) {
+      return next(new customError(error.message, 400));
+    }
+  }
+
+  // logout handler
+  static logout(req, res, next) {
+    try {
+      res.clearCookie("access_token");
+      res.status(200).json({
+        message: "Successfully logged out",
+      });
     } catch (error) {
       return next(new customError(error.message, 400));
     }
