@@ -5,7 +5,7 @@ class ProjetController {
   // add a new project
   static async addNewProject(req, res, next) {
     try {
-      const project = await projectModel.create(...req.body);
+      const project = await projectModel.create({ ...req.body });
 
       if (!project) {
         return next(new customError("Failed to add project"), 400);
