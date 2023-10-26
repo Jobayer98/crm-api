@@ -2,7 +2,7 @@ const customError = require("../utils/customError");
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 
-const auth = async (req, res, next) => {
+const isLoggedIn = async (req, res, next) => {
   try {
     const token =
       req.cookies.access_token ||
@@ -26,4 +26,4 @@ const auth = async (req, res, next) => {
   }
 };
 
-module.exports = auth;
+module.exports = isLoggedIn;
