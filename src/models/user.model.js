@@ -2,43 +2,37 @@ const { Schema, model } = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-const userSchema = new Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      trim: true,
-      unique: true,
-      lowercase: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: [6, "Password must be at least 6 characters"],
-    },
+const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  {
-    timestamps: true,
-  }
-);
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true,
+    lowercase: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: [6, "Password must be at least 6 characters"],
+  },
+});
 
 // Hash password
 userSchema.pre("save", async function (next) {
   const user = this;
   if (!user.isModified("password")) return next();
+  user.password = await bcrypt.hash(user.password, 10);
 
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
   next();
 });
 
-// Compare password
+// // Compare password
 userSchema.methods.comparePassword = async function (password) {
   const user = this;
   return await bcrypt.compare(password, user.password);
