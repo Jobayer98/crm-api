@@ -30,7 +30,7 @@ class ProjetController {
         return next(new customError("Projects not found"), 404);
       }
 
-      res.status(201).json({
+      res.status(200).json({
         message: "Successfully fetched project",
         data: project,
       });
@@ -49,7 +49,7 @@ class ProjetController {
         return next(new customError("Project not found"), 404);
       }
 
-      res.status(201).json({
+      res.status(200).json({
         message: "Successfully fetched project",
         data: project,
       });

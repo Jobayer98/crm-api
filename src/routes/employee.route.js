@@ -11,7 +11,7 @@ router
   .route("/get-employees")
   .get(isLoggedIn, customRole("admin"), EmployeeController.getEmployees);
 router
-  .route("/get-employee/:id")
+  .route("/get-employees/:id")
   .get(isLoggedIn, customRole("admin"), EmployeeController.getEmployee)
   .patch(isLoggedIn, customRole("admin"), EmployeeController.updateEmployee)
   .delete(isLoggedIn, customRole("admin"), EmployeeController.deleteEmployee);

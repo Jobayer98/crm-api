@@ -11,7 +11,7 @@ router
   .route("/get-clients")
   .get(isLoggedIn, customRole("admin"), ClientController.getclients);
 router
-  .route("/get-client/:id")
+  .route("/get-clients/:id")
   .get(isLoggedIn, customRole("admin"), ClientController.getclient)
   .patch(isLoggedIn, customRole("admin"), ClientController.updateclient)
   .delete(isLoggedIn, customRole("admin"), ClientController.deleteclient);

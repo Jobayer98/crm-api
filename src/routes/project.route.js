@@ -11,7 +11,7 @@ router
   .route("/get-projects")
   .get(isLoggedIn, customRole("admin"), ProjectController.getProjects);
 router
-  .route("/get-project/:id")
+  .route("/get-projects/:id")
   .get(isLoggedIn, customRole("admin"), ProjectController.getProjectInfo)
   .patch(isLoggedIn, customRole("admin"), ProjectController.updateProject)
   .delete(isLoggedIn, customRole("admin"), ProjectController.deleteProject);
