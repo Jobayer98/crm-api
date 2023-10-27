@@ -8,10 +8,10 @@ router
   .route("/add-employee")
   .post(isLoggedIn, customRole("admin"), EmployeeController.addEmployee);
 router
-  .route("/get-employees")
+  .route("/employees")
   .get(isLoggedIn, customRole("admin"), EmployeeController.getEmployees);
 router
-  .route("/get-employees/:id")
+  .route("/employees/:id")
   .get(isLoggedIn, customRole("admin"), EmployeeController.getEmployee)
   .patch(isLoggedIn, customRole("admin"), EmployeeController.updateEmployee)
   .delete(isLoggedIn, customRole("admin"), EmployeeController.deleteEmployee);

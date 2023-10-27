@@ -8,10 +8,10 @@ router
   .route("/add-project")
   .post(isLoggedIn, customRole("admin"), ProjectController.addNewProject);
 router
-  .route("/get-projects")
+  .route("/projects")
   .get(isLoggedIn, customRole("admin"), ProjectController.getProjects);
 router
-  .route("/get-projects/:id")
+  .route("/projects/:id")
   .get(isLoggedIn, customRole("admin"), ProjectController.getProjectInfo)
   .patch(isLoggedIn, customRole("admin"), ProjectController.updateProject)
   .delete(isLoggedIn, customRole("admin"), ProjectController.deleteProject);

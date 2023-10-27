@@ -8,10 +8,10 @@ router
   .route("/add-client")
   .post(isLoggedIn, customRole("admin"), ClientController.addclient);
 router
-  .route("/get-clients")
+  .route("/clients")
   .get(isLoggedIn, customRole("admin"), ClientController.getclients);
 router
-  .route("/get-clients/:id")
+  .route("/clients/:id")
   .get(isLoggedIn, customRole("admin"), ClientController.getclient)
   .patch(isLoggedIn, customRole("admin"), ClientController.updateclient)
   .delete(isLoggedIn, customRole("admin"), ClientController.deleteclient);

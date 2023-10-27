@@ -5,6 +5,7 @@ const projectSchema = new Schema({
     type: String,
     trim: true,
     required: true,
+    unique: true,
   },
   description: {
     type: String,
@@ -19,6 +20,10 @@ const projectSchema = new Schema({
   },
   duration: {
     type: Date,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 

@@ -8,10 +8,10 @@ router
   .route("/add-quotation")
   .post(isLoggedIn, customRole("admin"), QuotationController.addQuotation);
 router
-  .route("/get-quotations")
+  .route("/quotations")
   .get(isLoggedIn, customRole("admin"), QuotationController.getQuotations);
 router
-  .route("/get-quotations/:id")
+  .route("/quotations/:id")
   .get(isLoggedIn, customRole("admin"), QuotationController.getQuotationInfo)
   .patch(isLoggedIn, customRole("admin"), QuotationController.updateQuotation)
   .delete(isLoggedIn, customRole("admin"), QuotationController.deleteQuotation);

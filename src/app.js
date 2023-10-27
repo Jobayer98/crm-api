@@ -9,6 +9,7 @@ const employeeRouter = require("./routes/employee.route");
 const clientRouter = require("./routes/client.route");
 const projectRouter = require("./routes/project.route");
 const attendRouter = require("./routes/attend.route");
+const expenseRouter = require("./routes/expense.route");
 const quotationRouter = require("./routes/quotation.route");
 
 const app = express();
@@ -22,6 +23,7 @@ app.use("/api/v1", employeeRouter);
 app.use("/api/v1", clientRouter);
 app.use("/api/v1", projectRouter);
 app.use("/api/v1", quotationRouter);
+app.use("/api/v1", expenseRouter);
 app.use("/api/v1", attendRouter);
 
 app.use("*", (req, res) => {

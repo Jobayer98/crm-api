@@ -5,13 +5,13 @@ const customRole = require("../middlewares/customeRole.middleware");
 const router = require("express").Router();
 
 router
-  .route("/add-expese")
+  .route("/add-expense")
   .post(isLoggedIn, customRole("admin"), ExpenseController.addExpense);
 router
-  .route("/get-expenses")
+  .route("/expenses")
   .get(isLoggedIn, customRole("admin"), ExpenseController.getExpenses);
 router
-  .route("/update-expense/:id")
+  .route("/expenses/:id")
   .patch(isLoggedIn, customRole("admin"), ExpenseController.updateExpense)
   .delete(isLoggedIn, customRole("admin"), ExpenseController.deleteExpense);
 

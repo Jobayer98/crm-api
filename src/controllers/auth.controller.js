@@ -1,18 +1,14 @@
 const customError = require("../utils/customError");
-const User = require("../models/user.model");
+const User = require("../models/employee.model");
 
 class AuthController {
   // register handler
   static async register(req, res, next) {
     try {
-      const { name, email, password, confirmPassword } = req.body;
-
-      if (password !== confirmPassword) {
-        return next(new customError("Passwords do not match", 400));
-      }
+      const { name, email, password } = req.body;
 
       const user = await User.create({
-        name,
+        firstName: name,
         email,
         password,
       });
@@ -24,7 +20,7 @@ class AuthController {
       const token = user.generateJWT();
 
       const options = {
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + 1 * 60 * 60 * 1000),
         httpOnly: true,
       };
 
@@ -62,7 +58,7 @@ class AuthController {
       const token = user.generateJWT();
 
       const options = {
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + 1 * 60 * 60 * 1000),
         httpOnly: true,
       };
 

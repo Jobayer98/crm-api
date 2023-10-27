@@ -9,7 +9,7 @@ class ExpenseController {
       const expense = await expenseModel.create({ title, amounts });
 
       if (!expense) {
-        return next(new customError("Failed to add expense", 400));
+        return next(new customError("Failed to add expense, 400"));
       }
 
       res.status(201).json({
@@ -17,7 +17,7 @@ class ExpenseController {
         expense,
       });
     } catch (error) {
-      return next(new customError(error.message));
+      return next(new customError(error.message, 400));
     }
   }
 
@@ -34,7 +34,7 @@ class ExpenseController {
         data: expense,
       });
     } catch (error) {
-      return next(new customError(error.message));
+      return next(new customError(error.message, 400));
     }
   }
 
@@ -55,7 +55,7 @@ class ExpenseController {
         data: expense,
       });
     } catch (error) {
-      return next(new customError(error.message));
+      return next(new customError(error.message, 400));
     }
   }
 
@@ -73,7 +73,7 @@ class ExpenseController {
         data: expense,
       });
     } catch (error) {
-      return next(new customError(error.message));
+      return next(new customError(error.message, 400));
     }
   }
 }

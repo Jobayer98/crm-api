@@ -17,7 +17,7 @@ const quotationSchema = new Schema({
   duration: {
     type: Date,
   },
-  createAt: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },
