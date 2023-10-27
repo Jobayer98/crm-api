@@ -8,6 +8,7 @@ const authRouter = require("./routes/auth.route");
 const employeeRouter = require("./routes/employee.route");
 const clientRouter = require("./routes/client.route");
 const projectRouter = require("./routes/project.route");
+const attendRouter = require("./routes/attend.route");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api/v1", authRouter);
 app.use("/api/v1", employeeRouter);
 app.use("/api/v1", clientRouter);
 app.use("/api/v1", projectRouter);
+app.use("/api/v1", attendRouter);
 
 app.use("*", (req, res) => {
   res.status(404).json({
