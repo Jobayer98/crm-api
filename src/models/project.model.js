@@ -18,7 +18,10 @@ const projectSchema = new Schema({
   cost: {
     type: Number,
   },
-  duration: {
+  startDate: {
+    type: Date,
+  },
+  endDate: {
     type: Date,
   },
   createdAt: {
