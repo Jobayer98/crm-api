@@ -1,21 +1,62 @@
 const { Schema, model } = require("mongoose");
 
 const quotationSchema = new Schema({
-  projectName: {
+  companyName: {
     type: String,
     trim: true,
     required: true,
   },
-  description: {
-    type: String,
-    trim: true,
+  address: {
+    street: String,
+    city: String,
+    country: String,
+    postalCode: String,
   },
-  budget: {
+  customerDetails: {
+    name: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+      unique: true,
+    },
+    phone: {
+      type: String,
+      trim: true,
+      unique: true,
+    },
+    address: {
+      street: String,
+      city: String,
+      country: String,
+      postalCode: String,
+    },
+  },
+  items: [
+    {
+      description: {
+        type: String,
+        trim: true,
+        required: true,
+      },
+      unitPrice: {
+        type: Number,
+        required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+  total: {
     type: Number,
     required: true,
-  },
-  duration: {
-    type: Date,
   },
   createdAt: {
     type: Date,
