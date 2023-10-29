@@ -26,6 +26,12 @@ app.use("/api/v1", quotationRouter);
 app.use("/api/v1", expenseRouter);
 app.use("/api/v1", attendRouter);
 
+app.use("/", (req, res) => {
+  res.status(200).json({
+    message: "Welcome to crm api",
+  });
+});
+
 app.use("*", (req, res) => {
   res.status(404).json({
     message: "Route not found",
