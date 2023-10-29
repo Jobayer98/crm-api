@@ -28,7 +28,7 @@ app.use("/api/v1", attendRouter);
 
 app.use("/", (req, res) => {
   res.status(200).json({
-    message: "Welcome to crm api",
+    message: "Welcome to CRM API",
   });
 });
 
