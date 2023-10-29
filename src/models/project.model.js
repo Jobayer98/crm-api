@@ -7,10 +7,6 @@ const projectSchema = new Schema({
     required: true,
     unique: true,
   },
-  description: {
-    type: String,
-    trim: true,
-  },
   budget: {
     type: Number,
     required: true,
